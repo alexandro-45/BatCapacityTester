@@ -45,7 +45,7 @@ void backlightOn() {
 }
 
 #include "screen.h"
-#include "prefs.h"
+#include "settings.h"
 #include "utils.h"
 #include "history.h"
 #include "end_screen.h"
@@ -85,12 +85,12 @@ void setup() {
 
   if (eeprom_read_byte(0) != 222) { //якщо перший запуск то обнуляю
     prepare_history_eeprom();
-    prepare_prefs_eeprom();
+    prepare_settings_eeprom();
     eeprom_write_byte(0, 222);
     DEBUG_PRINTLN("first run");
   }
 
-  getPrefs();
+  getSettings();
 
   lcd.init();
   delay(100);

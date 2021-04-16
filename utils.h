@@ -1,17 +1,17 @@
 float getCurrentA() {
-  int clear_val = analogRead(CURRENT_PIN) - prefs.current_raw_offset;
+  int clear_val = analogRead(CURRENT_PIN) - settings.current_raw_offset;
   if (clear_val < 0) clear_val = 0;
-  return (float) clear_val / (float) prefs.current_1A;
+  return (float) clear_val / (float) settings.current_1A;
 }
 
 float getVbat() {
   int raw = analogRead(VBAT_PIN);
-  return (float) raw / (float) prefs.voltage1V_Vbat;
+  return (float) raw / (float) settings.voltage1V_Vbat;
 }
 
 float getVbus() {
   int raw = analogRead(VBUS_PIN);
-  return (float) raw / (float) prefs.voltage1V_Vbus;
+  return (float) raw / (float) settings.voltage1V_Vbus;
 }
 
 String formatTime(long millis) {

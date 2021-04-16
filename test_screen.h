@@ -117,14 +117,14 @@ class TestScreen: public Screen {
           capacity += add_cap;                                                //додати ємність в А*год на проміжку часу до загальної
           capacityWh += add_cap * voltage;                                    //обчислити ємність в Вт*год на проміжку часу і додати до загальної (С[Вт*год] = C[А*год] * V[В])
       
-          switch (prefs.stop_by) {                          //перевірити чи не пора завершити тест
+          switch (settings.stop_by) {                          //перевірити чи не пора завершити тест
             case STOP_BY_CURRENT:                           //якщо зупинка по струму
-              if (current_s <= (prefs.stop_value / 1000)) { //перевірити чи струм менше границі
+              if (current_s <= (settings.stop_value / 1000)) { //перевірити чи струм менше границі
                 exit_flag = true;                           //якщо менше, то завершити тест
               }
               break;
             case STOP_BY_VOLTAGE:                           //якщо зупинка по напрузі
-              if (getVbat() < prefs.stop_value / 1000) {    //перевірити чи напруга менше границі
+              if (getVbat() < settings.stop_value / 1000) {    //перевірити чи напруга менше границі
                 exit_flag = true;                           //якщо менше, то завершити тест
               }
               break;

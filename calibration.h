@@ -16,16 +16,16 @@ class CalibrationScreen: public Screen {
         lcd.print(":");
         switch (i) {
           case 0:
-            lcd.print(prefs.current_raw_offset);
+            lcd.print(settings.current_raw_offset);
             break;
           case 1:
-            lcd.print(prefs.current_1A);
+            lcd.print(settings.current_1A);
             break;
           case 2:
-            lcd.print(prefs.voltage1V_Vbat);
+            lcd.print(settings.voltage1V_Vbat);
             break;
           case 3:
-            lcd.print(prefs.voltage1V_Vbus);
+            lcd.print(settings.voltage1V_Vbus);
             break;
         }
       }
@@ -60,16 +60,16 @@ class CalibrationScreen: public Screen {
       } else if (up.isHolded()) {
         switch (cursor) {
           case 0:
-            prefs.current_raw_offset += pow(10, add_val % 4);
+            settings.current_raw_offset += pow(10, add_val % 4);
             break;
           case 1:
-            prefs.current_1A += pow(10, add_val % 4);
+            settings.current_1A += pow(10, add_val % 4);
             break;
           case 2:
-            prefs.voltage1V_Vbat += pow(10, add_val % 4);
+            settings.voltage1V_Vbat += pow(10, add_val % 4);
             break;
           case 3:
-            prefs.voltage1V_Vbus += pow(10, add_val % 4);
+            settings.voltage1V_Vbus += pow(10, add_val % 4);
             break;
         }
 
@@ -90,22 +90,22 @@ class CalibrationScreen: public Screen {
       } else if (down.isHolded()) {
         switch (cursor) {
           case 0:
-            prefs.current_raw_offset -= pow(10, add_val % 4);
+            settings.current_raw_offset -= pow(10, add_val % 4);
             break;
           case 1:
-            prefs.current_1A -= pow(10, add_val % 4);
+            settings.current_1A -= pow(10, add_val % 4);
             break;
           case 2:
-            prefs.voltage1V_Vbat -= pow(10, add_val % 4);
+            settings.voltage1V_Vbat -= pow(10, add_val % 4);
             break;
           case 3:
-            prefs.voltage1V_Vbus -= pow(10, add_val % 4);
+            settings.voltage1V_Vbus -= pow(10, add_val % 4);
             break;
         }
         last_draw = 0;
         backlightOn();
       } else if (down.isDouble()) {
-        eeprom_update_block((void*) &prefs, EEPROM_PREFS_ADDR, sizeof(prefs));
+        eeprom_update_block((void*) &settings, EEPROM_SETT_ADDR, sizeof(settings));
         saved = true;
         last_draw = 0;
         backlightOn();

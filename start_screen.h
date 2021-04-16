@@ -15,8 +15,8 @@ class StartScreen: public Screen {
       lcd.setCursor(4, 6);
       lcd.print("and press start");
     
-      lcd.setCursor(7, 101 - 6 * 7);
-      lcd.print("History");
+      lcd.setCursor(7, 101 - 6 * 9);
+      lcd.print("Hist/Sett");
     }
     
     void draw_bat(LCD& lcd) {
