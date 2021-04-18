@@ -42,7 +42,6 @@ class TestScreen: public Screen {
       lcd.print("Ah");
     
       lcd.setCursor(3, 0);
-      lcd.print("          ");
       lcd.print(capacityWh);
       lcd.print("Wh");
     
